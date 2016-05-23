@@ -40,7 +40,7 @@ public:
         std::string p = line.substr(pos1+1, pos2-pos1-1);
         std::string o = line.substr(pos2+1);
         
-        std::cout << s << p << o << std::endl;
+        //std::cout << s << p << o << std::endl;
 
         res.push_back(RDFtext(s,p,o));
       }
