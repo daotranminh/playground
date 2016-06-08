@@ -20,6 +20,10 @@ set(PLAYGROUND_SOURCES
   ${PLAYGROUND_DIR}/src/main.cpp
 )
 
+set(ARRAY_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/array.cpp
+)
+
 set(PROGRAM_OPTIONS_SOURCES
   ${PLAYGROUND_DIR}/src/tryboost/program_options.cpp
 )
@@ -36,12 +40,12 @@ find_package( Boost REQUIRED COMPONENTS program_options regex )
 include_directories( ${Boost_INCLUDE_DIRS} )
 
 add_executable(${PLAYGROUND} ${PLAYGROUND_SOURCES})
+add_executable(array ${ARRAY_SOURCES})
 add_executable(program_options ${PROGRAM_OPTIONS_SOURCES})
 add_executable(optional ${OPTIONAL_SOURCES})
 add_executable(variant ${VARIANT_SOURCES})
 
 target_link_libraries(${PLAYGROUND} ${CMAKE_THREAD_LIBS_INIT})
-
 target_link_libraries(program_options ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_REGEX_LIBRARY} )
 
 
