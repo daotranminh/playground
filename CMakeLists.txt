@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
 
 set (PLAYGROUND playground)
 
@@ -24,6 +25,10 @@ set(ARRAY_SOURCES
   ${PLAYGROUND_DIR}/src/tryboost/array.cpp
 )
 
+set(BIND_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/bind.cpp
+)
+
 set(PROGRAM_OPTIONS_SOURCES
   ${PLAYGROUND_DIR}/src/tryboost/program_options.cpp
 )
@@ -41,6 +46,7 @@ include_directories( ${Boost_INCLUDE_DIRS} )
 
 add_executable(${PLAYGROUND} ${PLAYGROUND_SOURCES})
 add_executable(array ${ARRAY_SOURCES})
+add_executable(bind ${BIND_SOURCES})
 add_executable(program_options ${PROGRAM_OPTIONS_SOURCES})
 add_executable(optional ${OPTIONAL_SOURCES})
 add_executable(variant ${VARIANT_SOURCES})
