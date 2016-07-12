@@ -21,28 +21,72 @@ set(PLAYGROUND_SOURCES
   ${PLAYGROUND_DIR}/src/main.cpp
 )
 
+
 set(ARRAY_SOURCES
   ${PLAYGROUND_DIR}/src/tryboost/array.cpp
 )
+
 
 set(BIND_SOURCES
   ${PLAYGROUND_DIR}/src/tryboost/bind.cpp
 )
 
+
 set(PROGRAM_OPTIONS_SOURCES
   ${PLAYGROUND_DIR}/src/tryboost/program_options.cpp
 )
+
 
 set(OPTIONAL_SOURCES
   ${PLAYGROUND_DIR}/src/tryboost/optional.cpp
 )
 
+
 set(VARIANT_SOURCES
   ${PLAYGROUND_DIR}/src/tryboost/variant.cpp
 )
 
-find_package( Boost REQUIRED COMPONENTS program_options regex )
+
+set(ASIO_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/asio.cpp
+)
+
+
+set(MULTI_INDEX_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/multi_index.cpp
+)
+
+
+set(SYNC_CLIENT_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/SyncClient.cpp
+)
+
+
+set(SYNC_SERVER_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/SyncServer.cpp
+)
+
+
+set(ASYNC_CLIENT_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/AsyncClient.cpp
+)
+
+
+set(ASYNC_SERVER_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/AsyncServer.cpp
+)
+
+
+
+set(TEMPLATE_SOURCES
+  ${PLAYGROUND_DIR}/src/trytemplate/main.cpp
+)
+
+
+find_package( Boost REQUIRED COMPONENTS program_options regex thread system)
 include_directories( ${Boost_INCLUDE_DIRS} )
+
+MESSAGE( STATUS "BOOST_DIR: " ${Boost_INCLUDE_DIRS} )
 
 add_executable(${PLAYGROUND} ${PLAYGROUND_SOURCES})
 add_executable(array ${ARRAY_SOURCES})
@@ -50,9 +94,20 @@ add_executable(bind ${BIND_SOURCES})
 add_executable(program_options ${PROGRAM_OPTIONS_SOURCES})
 add_executable(optional ${OPTIONAL_SOURCES})
 add_executable(variant ${VARIANT_SOURCES})
+add_executable(trytemplate ${TEMPLATE_SOURCES})
+add_executable(asio ${ASIO_SOURCES})
+add_executable(multi_index ${MULTI_INDEX_SOURCES})
+
+add_executable(sync_client ${SYNC_CLIENT_SOURCES})
+add_executable(sync_server ${SYNC_SERVER_SOURCES})
+add_executable(async_client ${ASYNC_CLIENT_SOURCES})
+add_executable(async_server ${ASYNC_SERVER_SOURCES})
+
 
 target_link_libraries(${PLAYGROUND} ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries(program_options ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_REGEX_LIBRARY} )
-
+target_link_libraries(program_options ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_REGEX_LIBRARY})
+target_link_libraries(asio ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(sync_client ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(sync_server ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
 
