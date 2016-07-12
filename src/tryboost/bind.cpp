@@ -132,4 +132,17 @@ int main()
                 bind(&Omap_t::value_type::second, _1), 2, 3));
   
   cout << "using map containers of pointers to class objects" << endl;
+  typedef map<int, Thing*> Pmap_t;
+  Pmap_t ptr_map;
+  ptr_map[1] = &t1;
+  ptr_map[2] = &t2;
+  ptr_map[3] = &t3;
+  
+  for_each(ptr_map.begin(), ptr_map.end(),
+           bind(&Thing::print,
+                bind(&Pmap_t::value_type::second, _1)));
+  
+  for_each(ptr_map.begin(), ptr_map.end(),
+           bind(&Thing::print2args,
+                bind(&Pmap_t::value_type::second, _1), 50, 100));
 }
