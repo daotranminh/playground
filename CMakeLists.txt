@@ -109,5 +109,6 @@ target_link_libraries(program_options ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_R
 target_link_libraries(asio ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 target_link_libraries(sync_client ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 target_link_libraries(sync_server ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
-
+target_link_libraries(async_client ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(async_server ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
