@@ -1,5 +1,5 @@
 //
-//  AsyncClient.cpp
+//  AsyncEchoClient.cpp
 //  playground
 //
 //  Created by Minh Dao Tran on 12/07/16.

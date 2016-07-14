@@ -1,5 +1,5 @@
 //
-//  SyncClient.cpp
+//  SyncEchoClient.cpp
 //  playground
 //
 //  Created by Minh Dao Tran on 17/06/16.

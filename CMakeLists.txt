@@ -77,6 +77,15 @@ set(ASYNC_ECHO_SERVER_SOURCES
 )
 
 
+set(ASYNC_CLIENT_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/AsyncClient.cpp
+)
+
+
+set(ASYNC_SERVER_SOURCES
+  ${PLAYGROUND_DIR}/src/tryboost/AsyncServer.cpp
+)
+
 
 set(TEMPLATE_SOURCES
   ${PLAYGROUND_DIR}/src/trytemplate/main.cpp
@@ -98,10 +107,13 @@ add_executable(trytemplate ${TEMPLATE_SOURCES})
 add_executable(asio ${ASIO_SOURCES})
 add_executable(multi_index ${MULTI_INDEX_SOURCES})
 
+
 add_executable(sync_echo_client ${SYNC_ECHO_CLIENT_SOURCES})
 add_executable(sync_echo_server ${SYNC_ECHO_SERVER_SOURCES})
 add_executable(async_echo_client ${ASYNC_ECHO_CLIENT_SOURCES})
 add_executable(async_echo_server ${ASYNC_ECHO_SERVER_SOURCES})
+add_executable(async_client ${ASYNC_CLIENT_SOURCES})
+add_executable(async_server ${ASYNC_SERVER_SOURCES})
 
 
 target_link_libraries(${PLAYGROUND} ${CMAKE_THREAD_LIBS_INIT})
@@ -111,4 +123,6 @@ target_link_libraries(sync_echo_client ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LI
 target_link_libraries(sync_echo_server ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 target_link_libraries(async_echo_client ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 target_link_libraries(async_echo_server ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(async_client ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(async_server ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
